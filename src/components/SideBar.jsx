@@ -1,5 +1,6 @@
 import React,{useContext} from 'react'
 import {ImCross} from 'react-icons/im'
+import { Link } from 'react-router-dom'
 import {NavContext} from '../context/NavContext'
 function SideBar() {
   const {setNavState} =  useContext(NavContext)
@@ -24,7 +25,7 @@ function SideBar() {
                 className="block py-3 px-4 text-coolGray-500 hover:text-coolGray-900 font-medium hover:bg-coolGray-50 rounded-md"
                 href="#"
               >
-                Product
+                Accueil
               </a>
             </li>
             <li>
@@ -32,7 +33,7 @@ function SideBar() {
                 className="block py-3 px-4 text-coolGray-500 hover:text-coolGray-900 font-medium hover:bg-coolGray-50 rounded-md"
                 href="#"
               >
-                Features
+                  A propos
               </a>
             </li>
             <li>
@@ -40,7 +41,7 @@ function SideBar() {
                 className="block py-3 px-4 text-coolGray-500 hover:text-coolGray-900 font-medium hover:bg-coolGray-50 rounded-md"
                 href="#"
               >
-                Pricing
+          comment ca marche ?
               </a>
             </li>
             <li>
@@ -48,26 +49,26 @@ function SideBar() {
                 className="block py-3 px-4 text-coolGray-500 hover:text-coolGray-900 font-medium hover:bg-coolGray-50 rounded-md"
                 href="#"
               >
-                Resources
+      Residences
               </a>
             </li>
           </ul>
           <div className="flex flex-wrap">
             <div className="w-full mb-2">
-              <a
+              <Link to="/login"
                 className="inline-block py-2 px-4 w-full text-sm leading-5 text-coolGray-500 hover:text-coolGray-900 bg-transparent font-medium text-center rounded-md"
                 href="#"
               >
                se connecter
-              </a>
+              </Link>
             </div>
             <div className="w-full">
-              <a
+            <Link to='/signup'
                 className="inline-block py-2 px-4 w-full text-sm leading-5 text-white bg-blue-500 hover:bg-blue-600 font-medium text-center focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md"
-                href="#"
+               
               >
                 s'enregistrer
-              </a>
+                </Link>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState ,useContext} from "react";
 import {IoIosMenu} from 'react-icons/io'
 import {NavContext} from "../context/NavContext";
+import {Link} from 'react-router-dom'
  function Menu() {
     const {setNavState} =  useContext(NavContext)
 
@@ -28,7 +29,7 @@ import {NavContext} from "../context/NavContext";
               className="text-coolGray-500 hover:text-coolGray-900 font-medium"
               href="#"
             >
-              Product
+             Accueil
             </a>
           </li>
           <li className="mr-12">
@@ -36,7 +37,7 @@ import {NavContext} from "../context/NavContext";
               className="text-coolGray-500 hover:text-coolGray-900 font-medium"
               href="#"
             >
-              Features
+              A propos
             </a>
           </li>
           <li className="mr-12">
@@ -44,33 +45,33 @@ import {NavContext} from "../context/NavContext";
               className="text-coolGray-500 hover:text-coolGray-900 font-medium"
               href="#"
             >
-              Resources
+              comment ca marche ?
             </a>
           </li>
           <li>
-            <a
+            <Link to='/residences'
               className="text-coolGray-500 hover:text-coolGray-900 font-medium"
-              href="#"
+             
             >
-              Pricing
-            </a>
+              Residences
+            </Link>
           </li>
         </ul>
       </div>
       <div className="hidden xl:block xl:w-1/3">
         <div className="flex items-center justify-end">
-          <a
+          <Link to='/login'
             className="inline-block py-2 px-4 mr-2 leading-5 text-coolGray-500 hover:text-coolGray-900 bg-transparent font-medium rounded-md"
-            href="#"
+           
           >
       se connecter
-          </a>
-          <a
+          </Link>
+          <Link to='/signup'
             className="inline-block py-2 px-4 text-sm leading-5 text-blue-50 bg-blue-500 hover:bg-blue-600 font-medium focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md"
-            href="#"
+           
           >
             s'enregistrer
-          </a>
+          </Link>
         </div>
       </div>
     </div>

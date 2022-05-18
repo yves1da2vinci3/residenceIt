@@ -1,9 +1,11 @@
-import React, {useRef,useState} from 'react'
-import  VideoUrl  from '../public/video/videoplayback.mp4'
+import React,{ useState, useRef} from 'react'
 import {BsPlayFill,BsFillPauseFill} from 'react-icons/bs'
 import {MdLocationPin} from 'react-icons/md'
 import {ImCross} from 'react-icons/im'
+
 function VisualResidence({SetVisual}) {
+  const ImagesLinks =   JSON.parse(localStorage.getItem('imagesLinks')) 
+  const VideoLink = localStorage.getItem("videoLink")
     const [playing, setPlaying] = useState(false);
     const videoRef = useRef(null);
     const onVideoPress = () => {
@@ -39,58 +41,27 @@ function VisualResidence({SetVisual}) {
          
              >
                <source
-                 src={VideoUrl}
+                 src={VideoLink}
                  type="video/mp4"
                />
              </video>
    
        </div>
        <div className="flex flex-wrap -mx-2">
-         <div className="w-1/2 sm:w-1/4 p-2">
-           <a className="block border border-blue-300" href="#">
-             <img
-               className="w-full h-32 object-cover"
-               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNJDjS6sWHuPAmIaijE6Vogu3Gppo3zE_uKw&usqp=CAU"
-               alt=""
-             />
-           </a>
-         </div>
-         <div className="w-1/2 sm:w-1/4 p-2">
-           <a
-             className="block border border-transparent hover:border-gray-400"
-             href="#"
-           >
-             <img
-               className="w-full h-32 object-cover"
-               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa9J5DGLfOs-axNSdURcdAjMdhabp8V3UxyA&usqp=CAU"
-               alt=""
-             />
-           </a>
-         </div>
-         <div className="w-1/2 sm:w-1/4 p-2">
-           <a
-             className="block border border-transparent hover:border-gray-400"
-             href="#"
-           >
-             <img
-               className="w-full h-32 object-cover"
-               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuj_wdDl5aT4Q2PWKFuJ5bmb_DcfHqG0wIDQ&usqp=CAU"
-               alt=""
-             />
-           </a>
-         </div>
-         <div className="w-1/2 sm:w-1/4 p-2">
-           <a
-             className="block border border-transparent hover:border-gray-400"
-             href="#"
-           >
-             <img
-               className="w-full h-32 object-cover"
-               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpFVRB0EwFLC_Pm9o8hhL-RZOFW28Mi3wdOg&usqp=CAU"
-               alt=""
-             />
-           </a>
-         </div>
+       {/* */}
+    
+      {ImagesLinks.map( img =>( 
+      <div key={img} className="w-1/2 sm:w-1/4 p-2">
+      <div className="block border border-blue-300" >
+        <img
+          className="w-full h-32 object-cover"
+          src={img}
+        
+        />
+      </div>
+    </div>
+ ) ) }
+
        </div>
      </div>
      <div className="w-full md:w-1/2 px-4">

@@ -4,6 +4,9 @@ Routes,
   Route,
 } from "react-router-dom";
 import './index.css'
+import {ToastContainer} from 'react-toastify'
+
+
 // importation des screens
 import HomeScreen from "./Screens/HomeScreen";
 import LoginScreen from "./Screens/LoginScreen";
@@ -15,22 +18,36 @@ import ResidenceScreen from "./Screens/ResidenceScreen";
 import CreateResidence from "./Screens/dashboard/CreateResidence";
 import SidebarLayout from "./Layout/SidebarLayout";
 import RequestUserTable from './Screens/dashboard/RequestUserTable'
+import AdminUserScreen from "./Screens/dashboard/UserScreen";
+import BreakdownScreen from "./Screens/dashboard/BreakdownScreen";
 // importation de NavContext
 import NavContext from "./context/NavContext";
+import AuthContext from "./context/AuthContext";
+import SignupContext from "./context/SignupContext";
+import ModalContext from "./context/ModalContext";
+
 function App() {
 
-  return (
+  return ( 
+    <ModalContext>
+     
+    <SignupContext>
+    <AuthContext>
     <NavContext>
+      <ToastContainer />
     <Router>
   <Routes>
     <Route  path="/login"  element={ <LoginScreen/>} />
     <Route  path="/signup"  element={ <SignupScreen/>} />
     <Route  path="/"  element={ <HomeScreen/>} />
-    <Route  path="/residences"  element={ <ResidenceScreen/>} />
     <Route  path="/residence/:IdResidence"  element={ <OneResidence/>} />
+    <Route  path="/residences"  element={ <ResidenceScreen/>} />
+   
     <Route   element={<SidebarLayout />}>
       <Route path="/admin/request"  element={ <RequestUserTable /> } />
-      {/* <Route path="/admin/warning" /> */}
+      <Route path="/admin/users"  element={ <AdminUserScreen /> } />
+      <Route path="/admin/breakdown"  element={ <BreakdownScreen /> } />
+          {/* <Route path="/admin/warning" /> */}
     </Route>
     <Route  path="/admin/create"  element={ <CreateResidence/>} />
     <Route  path="/user"  element={ <UserScreen/>} />
@@ -39,6 +56,10 @@ function App() {
   </Routes>
   </Router>
   </NavContext>
+  </AuthContext>
+  </SignupContext>
+  </ModalContext>
+
   )
 }
 

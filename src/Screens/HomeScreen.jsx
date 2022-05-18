@@ -6,13 +6,13 @@ import Residence from '../components/Residence'
 import FeedBack from '../Layout/FeedBack'
 import SideBar from '../components/SideBar'
 import {NavContext} from '../context/NavContext'
-import Modal from '../components/Modal'
+import  {useNavigate } from 'react-router-dom'
 function HomeScreen() { 
+  const navigate = useNavigate()
   const {NavState} = useContext(NavContext)
-  // const [ModalState,SetModal] = useState(false)
-  // const OpenModal = () =>{
-  //   SetModal(true)
-  // } 
+  const moveToResidences = () => { 
+    navigate("/residences")
+   }
   return (
     <div className=' h-auto relative '  >
       {/* <div   onClick={OpenModal} className=' fixed h-20 w-20 rounded-full  flex justify-center items-center bg-blue-600  bottom-4 right-4 z-50 '>
@@ -37,7 +37,7 @@ function HomeScreen() {
 {/* long speech */}
 <div className='flex flex-col p-4 bg-white justify-between' >
 <h1 className='text-blue-400 font-semibold text-[2rem]'>A propos de nous</h1>
-<p className='mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight' >nous sommes ce que vous recherchez en matiere de <span className='text-blue-500 font-bold'>logement estudiantin</span> dans la ville d'abidjan.</p>
+<p className='mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight' >Nous sommes ce que vous recherchez en matiere de <span className='text-blue-500 font-bold'>logement estudiantin</span> dans la ville d'abidjan.</p>
 
 <p className='mb-8 text-xl leading-8  tracking-tight md:text-2xl text-gray-500 font-medium '>  We’re different. Flex is the only saas business platform that lets you
             run your business on one platform, seamlessly across all digital
@@ -147,7 +147,8 @@ function HomeScreen() {
 <Residence />
 <Residence />
 </div>
-<div className="w-72 self-center mt-8  p-4 cursor-pointer">
+
+<div  onClick={moveToResidences} className="w-72 self-center mt-8  p-4 cursor-pointer">
               <p
                 className="inline-block py-5 px-7 w-full text-base md:text-lg leading-4 text-blue-50 font-medium text-center bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 border border-blue-500 rounded-md shadow-sm"
   
@@ -156,6 +157,7 @@ function HomeScreen() {
               </p>
             </div>
     </div>
+  
     <div  className='h-screen mt-16'>
       {/* give FeedBack */}
 

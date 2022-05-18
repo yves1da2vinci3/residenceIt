@@ -1,4 +1,4 @@
-import React,{ useState} from 'react'
+import React,{ useState,useContext, useEffect,useRef} from 'react'
 import {HiUserCircle} from 'react-icons/hi'
 import {GoAlert} from 'react-icons/go'
 import {GiPayMoney} from 'react-icons/gi'
@@ -6,18 +6,41 @@ import {IoStatsChartSharp} from 'react-icons/io5'
 import {AiOutlineTwitter,AiOutlineInstagram} from 'react-icons/ai'
 import {BsFacebook} from 'react-icons/bs'
 import Modal from '../../components/Modal'
-
+import axios from 'axios'
+import {AuthContext} from "../../context/AuthContext"
+import dns from '../../utils/dns'
+import {Link} from 'react-router-dom'
 function UserScreen() {
+  const {User,setUser} = useContext(AuthContext)
+  const FecthUserProfile = async  () => { 
+    const token =  localStorage.getItem("UserToken")
+    try {
+      const {data} = await axios.get(` ${dns}/api/users/profile`,{
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      setUser(data)
+    } catch (error) {
+      console.log(error)
+    }
+   }
+  useEffect(  () =>{
+    FecthUserProfile().catch(err => console.log(err))
+
+  })
   const [ModalState,SetModal] = useState(false)
-  const [isGirl,setGirl] = useState(false)
+  const [isGirl,setGirl] = useState(User.sex ===1)
 const OpenModal = () =>{
   SetModal(true)
 } 
   return (
     <div className='flex flex-col p-4  relative  '>
-            { ModalState ? <Modal  setModal={SetModal} /> : "" }
+            { ModalState ? <Modal   setModal={SetModal} /> : "" }
       <div className='flex  gap-x-2 justify-between'>
 <h1 className=' md:text-4xl font-semibold tracking-wide'>Bienvenue sur votre profil</h1>
+<div className='flex gap-x-3'>
 <span className='flex gap-x-1 items-center'>
   { isGirl ?   <img src='https://us.123rf.com/450wm/apoev/apoev1903/apoev190300160/124274049-person-white-photo-placeholder-woman-silhouette-on-gray-background.jpg?ver=6' 
   className='h-16 w-16  rounded-full'
@@ -26,16 +49,19 @@ const OpenModal = () =>{
   /> }
  
 
-  <h1 className=' md:text-4xl font-semibold tracking-wide text-blue-500'>Yves Lionel DIOMANDE</h1>
+  <h1 className=' md:text-4xl font-semibold tracking-wide text-blue-500'>{User.lastName + " " + User.firstName  }</h1>
 </span>
-
+</div>
 </div>
 {/* services pour utilisateur */}
+
 <div className=' flex    h-auto  justify-center md:justify-start mt-20 gap-2 flex-wrap '>
+<Link to='/user/profile' >
   <div className='flex flex-col gap-y-5  h-[28rem] md:h-[38rem] justify-center items-center p-4 cursor-pointer hover:bg-blue-500 hover:text-white bg-white w-[28rem] rounded-lg shadow-lg  '>
 <HiUserCircle className='text-yellow-400 text-9xl'  />
 <h1 className='text-xl font-semibold tracking-wide text-center '>Modifier ses informations personnels</h1>
   </div>
+  </Link>
   <div onClick={OpenModal} className='flex flex-col gap-y-5 h-[28rem] md:h-[38rem] justify-center items-center p-4 cursor-pointer hover:bg-blue-500  hover:text-white bg-white w-[28rem] rounded-lg shadow-lg  '>
 <GoAlert className='text-red-600 text-9xl'  />
 <h1 className='text-xl font-semibold tracking-wide text-center '>signaler une panne</h1>
