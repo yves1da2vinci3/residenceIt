@@ -1,15 +1,48 @@
-import React ,{useContext} from 'react'
+import React ,{useContext,useEffect} from 'react'
 import NavBar from '../components/NavBar'
 import Header from '../components/Header'
 import {ImSearch,ImUserPlus,ImHome,ImFolder} from 'react-icons/im'
 import Residence from '../components/Residence'
 import FeedBack from '../Layout/FeedBack'
 import SideBar from '../components/SideBar'
-import {NavContext} from '../context/NavContext'
 import  {useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import dns from '../utils/dns'
+import NavAtom from '../recoil/Atoms/NavAtom'
+import userAtom from "../recoil/Atoms/userAtom"
+import {useRecoilValue,useSetRecoilState} from "recoil"
 function HomeScreen() { 
+  const NavState = useRecoilValue(NavAtom)
+  const setUser = useSetRecoilState(userAtom)
+  useEffect(() =>{
+    const FecthUserProfile = async  () => { 
+      const token =  localStorage.getItem("UserToken")
+      try {
+        const {data} = await axios.get(` ${dns}/api/users/profile`,{
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        setUser(data)
+        if(data){
+          if(data.isAdmin){
+            return  navigate("/admin/request")
+          }
+          if(!data.isAdmin){
+            return  navigate("/user/")
+          }
+        }
+      
+      } catch (error) {
+        console.log(error)
+      }
+  }
+  FecthUserProfile()
+}
+  ,[])
   const navigate = useNavigate()
-  const {NavState} = useContext(NavContext)
+
   const moveToResidences = () => { 
     navigate("/residences")
    }

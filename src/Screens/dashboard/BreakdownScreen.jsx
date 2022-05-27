@@ -1,16 +1,17 @@
-import React,{useState,useEffect,useContext} from 'react'
+import React,{useState,useEffect} from 'react'
 import BreakdownItemOne from '../../components/BreakdownItemOne'
 import BreakdownItemTwo from '../../components/BreakdownItemTwo'
 import axios from "axios"
+import {useRecoilState} from 'recoil'
+import RefreshTableAtom from '../../recoil/Atoms/RefreshTableAtom'
 import { SpinnerCircular } from 'spinners-react';
-import {ModalContext} from '../../context/ModalContext'
 import { useNavigate } from 'react-router-dom';
 import dns from '../../utils/dns';
 function BreakdownScreen() {
   const Navigate = useNavigate()
-  const {refreshTable,setrefreshTable} = useContext(ModalContext)
+  const [refreshTable,setrefreshTable] = useRecoilState(RefreshTableAtom)
   if(refreshTable){
-    setrefreshTable(true)
+    setrefreshTable(false)
     Navigate('/admin/request')
   }
   const [loading,SetLoading] = useState(true);
@@ -79,7 +80,7 @@ function BreakdownScreen() {
           </thead>
           <tbody>
          { BreakDowns.map( breakdown =>(
-             BreakDowns.indexOf(breakdown) % 2 ===0 ? <BreakdownItemTwo key={breakdown._id} breakdown={breakdown}  />  : <BreakdownItemOne breakdown={breakdown}  key={breakdown._d} />
+             BreakDowns.indexOf(breakdown) % 2 ===0 ? <BreakdownItemTwo key={breakdown._id} breakdown={breakdown}  />  : <BreakdownItemOne breakdown={breakdown}  key={breakdown._id} />
          ))  }
            
             

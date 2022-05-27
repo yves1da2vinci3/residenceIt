@@ -44,9 +44,14 @@ break;
 // For instance, get the download URL: https://firebasestorage.googleapis.com/...
 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
 finish= true
+const image = {
+  Filereference : `/images/${item.name}`,
+  FileLink : downloadURL
+}
+const imageStringified = JSON.stringify(image)
 const ImagesLinks =   JSON.parse(localStorage.getItem('imagesLinks'))
-const filteredArray = ImagesLinks.filter(elt => elt !== downloadURL) 
-const updatedImagesLink = [...filteredArray, downloadURL]
+const filteredArray = ImagesLinks.filter(elt => JSON.parse(elt).FileLink !== downloadURL) 
+const updatedImagesLink = [...filteredArray, imageStringified]
 localStorage.setItem("imagesLinks",JSON.stringify(updatedImagesLink))
 });
 }

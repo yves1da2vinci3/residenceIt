@@ -1,12 +1,35 @@
-import React,{useRef,useContext, useState} from 'react'
+import React,{useRef,useContext, useState,useEffect} from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import dns from '../utils/dns'
-import {AuthContext} from "../context/AuthContext"
+import userAtom from "../recoil/Atoms/userAtom"
   import 'react-toastify/dist/ReactToastify.css';
   import { SpinnerCircular } from 'spinners-react';
+
+import {useRecoilState} from 'recoil'
+
 function SignupScreen() {
+  const [User,setUser] = useRecoilState(userAtom)
+  const navigate = useNavigate();
+    useEffect(()=>{
+      const token = localStorage.getItem("UserToken")
+      if(!token) return
+      if(Object.keys(User).length > 0){
+        if (User.isAdmin) {
+
+          navigate("/admin/request");
+        }
+    
+        if(!User.isAdmin){
+          navigate("/user");
+        }
+      }
+    
+    },[])
+
+  
+  
   // config pour la requete
   const config = {
     headers: {
@@ -15,8 +38,8 @@ function SignupScreen() {
   }
   const EmailInput = useRef(null)
   const PasswordInput = useRef(null)
-  const navigate = useNavigate()
-  const {setUser} = useContext(AuthContext)
+
+
 const [IsLoading,setIsLoading] = useState(false)
   const SubmitHandler = async (e) => { 
     e.preventDefault()
@@ -137,7 +160,7 @@ const [IsLoading,setIsLoading] = useState(false)
             { IsLoading ? <div className='bg-blue-500 p-3 rounded flex items-center justify-center ' >
             <SpinnerCircular speed={150} size={30} color='white' />
             </div>  :        <input type='submit'
-              className="inline-block py-3 px-7 mb-6 w-full text-base text-blue-50 font-medium text-center leading-6 bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md shadow-sm"
+              className="inline-block py-3 px-7 mb-6 w-full text-base text-blue-50 font-medium text-center cursor-pointer leading-6 bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md shadow-sm"
     value="  Se connecter"
            /> }
      

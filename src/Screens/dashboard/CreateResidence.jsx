@@ -32,14 +32,21 @@ function CreateResidence() {
   const OpenUploadImage = () => {
     SetImageUpload(true)
   }
-  const submitHandler = async () => { 
+  const submitHandler = async (e) => { 
+    e.preventDefault()
     setIsLoading(true)
+    let imageUrls = []
     const Description = DescriptionRef.current.value
     const Localisation = communeRef.current.value
     const MoreInfoLocalisation = LocalisationRef.current.value
    const sexe = sexInput.current.value
-   const imageUrls =    JSON.parse(localStorage.getItem('imagesLinks'))
-   const videoUrl = localStorage.getItem("videoLink")
+   const imageUrlsString =    JSON.parse(localStorage.getItem('imagesLinks'))
+   imageUrlsString.forEach(imgString => {
+    imageUrls.push(JSON.parse(imgString))
+   });
+   const videoUrl = JSON.parse(localStorage.getItem("videoLink")) 
+   console.log("merrco, de chien")
+   console.log(videoUrl)
     try {
       const {data} = await axios.post(` ${dns}/api/residences/`,  {Description, Localisation,MoreInfoLocalisation,sexe,imageUrls,videoUrl} ,config)
  
@@ -54,6 +61,8 @@ function CreateResidence() {
         draggable: true,
         progress: undefined,
         });
+        localStorage.removeItem("imagesLinks")
+            localStorage.removeItem("videoLink")
         Navigate('/admin/request',{ replace : true })
     } catch (error) {
       toast.error(` ${error}`, {

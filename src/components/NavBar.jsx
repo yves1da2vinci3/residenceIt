@@ -1,11 +1,10 @@
-import React, { useState ,useContext} from "react";
+import React from "react";
 import {IoIosMenu} from 'react-icons/io'
-import {NavContext} from "../context/NavContext";
+import NavAtom from '../recoil/Atoms/NavAtom'
+import {useSetRecoilState} from "recoil"
 import {Link} from 'react-router-dom'
  function Menu() {
-    const {setNavState} =  useContext(NavContext)
-
-
+  const setNavState =  useSetRecoilState(NavAtom)
   const ToggleNav = () =>{
     setNavState(true)
   }

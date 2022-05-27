@@ -5,13 +5,15 @@ import {GiPayMoney} from 'react-icons/gi'
 import {IoStatsChartSharp} from 'react-icons/io5'
 import {AiOutlineTwitter,AiOutlineInstagram} from 'react-icons/ai'
 import {BsFacebook} from 'react-icons/bs'
+import {RiLogoutCircleLine} from 'react-icons/ri'
 import Modal from '../../components/Modal'
 import axios from 'axios'
-import {AuthContext} from "../../context/AuthContext"
 import dns from '../../utils/dns'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 function UserScreen() {
-  const {User,setUser} = useContext(AuthContext)
+
+  const [user,setUser] = useState({})
+  const Navigate = useNavigate()
   const FecthUserProfile = async  () => { 
     const token =  localStorage.getItem("UserToken")
     try {
@@ -31,16 +33,25 @@ function UserScreen() {
 
   })
   const [ModalState,SetModal] = useState(false)
-  const [isGirl,setGirl] = useState(User.sex ===1)
+  const [isGirl,setGirl] = useState(user.sex ===1)
 const OpenModal = () =>{
   SetModal(true)
 } 
+const logoutHandler = () => { 
+  localStorage.removeItem("UserToken")
+  Navigate("/")
+  setUser(null)
+}
   return (
     <div className='flex flex-col p-4  relative  '>
             { ModalState ? <Modal   setModal={SetModal} /> : "" }
       <div className='flex  gap-x-2 justify-between'>
 <h1 className=' md:text-4xl font-semibold tracking-wide'>Bienvenue sur votre profil</h1>
-<div className='flex gap-x-3'>
+<div className='flex gap-x-3 items-center '>
+<div   onClick={logoutHandler}  className='flex flex-col w-24 h-24 rounded-full self-center text-red-600 hover:text-white bg-white cursor-pointer hover:bg-red-500 shadow-lg  justify-center items-center gap-x-3'>
+        <RiLogoutCircleLine size={24}  className=' fill-current '/>
+        <p className=' text-sm tracking-tight font-semibold  '> se deconnecter</p>
+             </div>
 <span className='flex gap-x-1 items-center'>
   { isGirl ?   <img src='https://us.123rf.com/450wm/apoev/apoev1903/apoev190300160/124274049-person-white-photo-placeholder-woman-silhouette-on-gray-background.jpg?ver=6' 
   className='h-16 w-16  rounded-full'
@@ -49,7 +60,7 @@ const OpenModal = () =>{
   /> }
  
 
-  <h1 className=' md:text-4xl font-semibold tracking-wide text-blue-500'>{User.lastName + " " + User.firstName  }</h1>
+  <h1 className=' md:text-4xl font-semibold tracking-wide text-blue-500'>{user.lastName + " " + user.firstName  }</h1>
 </span>
 </div>
 </div>

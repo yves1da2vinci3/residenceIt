@@ -55,7 +55,7 @@ function VisualResidence({SetVisual}) {
       <div className="block border border-blue-300" >
         <img
           className="w-full h-32 object-cover"
-          src={img}
+          src={JSON.parse(img).FileLink    }
         
         />
       </div>

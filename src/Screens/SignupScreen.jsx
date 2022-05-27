@@ -1,15 +1,17 @@
-import React, {useContext,useRef,useState} from 'react'
-import {SignupContext} from "../context/SignupContext"
+import React, {useRef,useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import { SpinnerCircular } from 'spinners-react'
 import dns from '../utils/dns'
 import {toast} from 'react-toastify'
+import ForfeitAtom from "../recoil/Atoms/forfeitAtom"
+import SignupAtom from "../recoil/Atoms/SignupAtom"
+import {useRecoilValue} from 'recoil'
 function SignupScreen() {
   const Navigate =   useNavigate()
   const [IsLoading,setIsLoading] = useState(false)
-
-  const {ResidenceInfo,Forfeit} = useContext(SignupContext)
+  const ResidenceInfo = useRecoilValue(SignupAtom)
+  const  Forfeit  = useRecoilValue(ForfeitAtom)
   console.log(Forfeit)
   const LastNameInput = useRef(null)
   const FirstNameInput = useRef(null)
@@ -206,7 +208,7 @@ axios.post(`${dns}/api/requests/`,{Forfeit,ResidenceId,userId},{ headers: {
         <div className="absolute inset-0 bg-gray-800 z-10 opacity-50" />
         <img
           className="absolute inset-0 h-full ml-auto object-cover z-0"
-          src={ResidenceInfo.imageUrls[0]}
+          src={ ResidenceInfo.imageUrls[0].FileLink}
           alt=""
         />
         <div

@@ -8,22 +8,35 @@ import dns from '../utils/dns'
 import {FaEye} from 'react-icons/fa'
 import {Link, useParams} from 'react-router-dom'
 import { SpinnerCircular } from 'spinners-react'
-import {SignupContext} from "../context/SignupContext"
 import {useNavigate} from 'react-router-dom'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import {ImCross} from 'react-icons/im'
+import ForfeitAtom from "../recoil/Atoms/forfeitAtom"
+import SignupAtom from "../recoil/Atoms/SignupAtom"
+import { useSetRecoilState } from 'recoil'
 function OneResidence() {
+  const  setResidenceInfo = useSetRecoilState(SignupAtom)
+  const  setForfeit = useSetRecoilState(ForfeitAtom)
+  //parametrage du carousel
+  const [imageIndex, setImageIndex] = useState(0);
   var settings = {
-    dots: true
+    dots : true,
+    infinite: true,
+    lazyLoad: true,
+    speed: 300,
+    slidesToShow: 1,
+    centerMode: true,
+    centerPadding: 0,
+    beforeChange: (current, next) => setImageIndex(next),
   };
+
   const Navigate = useNavigate()
   const [VisualState,SetVisual] = useState(false)
-  const {setResidenceInfo,setForfeit} = useContext(SignupContext)
   const params = useParams()
   const selectInput = useRef(null)
-  const [residence,setResidence] = useState([])
+  const [residence,setResidence] = useState()
   const [loading,SetLoading] = useState(true);
   const OpenVisual = () =>{
     SetVisual(true)
@@ -47,7 +60,7 @@ function OneResidence() {
         },
       })
       setResidence(data)
-      console.log(data)
+      // console.log(data)
       SetLoading(false)
     } catch (error) {
       console.log(error)
@@ -66,22 +79,23 @@ function OneResidence() {
           setPlaying(true)
       }
   }
+  console.log( )
   return (
    <div className='p-2'>
      
      { loading ? <div className="flex h-screen justify-center items-center  w-screen" > <SpinnerCircular speed={100} size={50} color="blue" /></div> : VisualState ? (
        <div className='h-screen w-screen relative bg-slate-50 flex items-center justify-center'>
      <div className='absolute right-16 top-8 z-50'>
-      < ImCross   onClick={closeModal} size={24}  className='hover:text-blue-400 text-current '  color='text-white'  />
+      < ImCross   onClick={closeModal} size={24}  className='hover:text-blue-400 text-current cursor-pointer '  color='text-white'  />
      </div>
-     <Slider {...settings}  className='h-[45rem] overflow-x-hidden shadow-xl rounded-lg  w-[27rem] md:w-[32rem] z-10' >
+     <Slider {...settings}  className='h-[45rem] flex overflow-x-hidden rounded-lg  w-full  z-10' >
      {residence.imageUrls.map( img =>(
 
      
                  <img
                  key={img}
-                   className=" rounded-lg  h-[45rem]  w-[27rem] md:w-[32rem] object-cover"
-                   src={img}
+                   className=" rounded-lg  h-[45rem]  w-[27rem] md:w-[32rem] object-contain"
+                   src={img.FileLink }
                  
                  />
         
@@ -101,19 +115,19 @@ function OneResidence() {
     <div className="flex flex-wrap -mx-4 mb-24">
       <div className="w-full md:w-1/2 px-4 mb-8 md:mb-0">
         <div className="relative mb-10" style={{ height: 564 }}>
-        <div       onClick={onVideoPress} className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 cursor-pointer  w-20 h-20 rounded-full bg-blue-500 hover:bg-blue-600 flex justify-center items-center'  >
-       { playing ? <BsFillPauseFill   size={36}  color='white'/> :       <BsPlayFill   size={36}  color='white'/> }
+        <div       onClick={onVideoPress} className='absolute top- z-40 cursor-pointer  -bottom-5 -left-5 w-12 h-12 rounded-full bg-blue-500 hover:bg-blue-600 flex justify-center items-center'  >
+       { playing ? <BsFillPauseFill   size={24}  color='white'/> :       <BsPlayFill   size={24}  color='white'/> }
    
  </div>
  <video
               ref={videoRef}
-                className="h-full w-full"
-                poster={residence.imageUrls[0]}
+                className="h-full w-full object-fill"
+                poster={residence?.imageUrls[0].FileLink}
                 muted=""
           
               >
                 <source
-                  src="https://firebasestorage.googleapis.com/v0/b/residenceit-348614.appspot.com/o/videos%2FBlack%20K%20-%20Porta%20Potty%20(freestyle).mp4?alt=media&token=925d163d-4fcf-47ff-bb4b-a9b15d307124"
+                  src={  residence.videoUrl.FileLink }
                   type="video/mp4"
                 />
               </video>
@@ -125,7 +139,7 @@ function OneResidence() {
                <a className="block border border-blue-300" >
                  <img
                    className="w-full h-32 object-cover"
-                   src={img}
+                   src={    img.FileLink                    }
                  
                  />
                </a>
@@ -151,7 +165,7 @@ function OneResidence() {
            {residence.MoreInfoLocalisation}
             </h2>
             { residence.isAvailable ?  <p className="inline-block mb-8 text-2xl font-bold font-heading text-blue-300">
-              <span>   disponible</span> :
+              <span>   disponible</span> 
             
             </p> : <p className="inline-block mb-8 text-2xl font-bold font-heading text-red-500">
               <span>  non disponible</span>

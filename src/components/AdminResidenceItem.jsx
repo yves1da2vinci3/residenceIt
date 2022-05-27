@@ -1,20 +1,20 @@
 import React,{useState} from 'react'
-import {FaEye} from 'react-icons/fa'
+import {FaEye,FaPen} from 'react-icons/fa'
 import {MdLocationPin,MdPinDrop} from 'react-icons/md'
 import { Link, useNavigate } from 'react-router-dom'
 function ResidenceItem({residence}) {
   const Navigate = useNavigate()
 const residenceId = residence._id
 
+  const AdminresidenceLink ="/admin/residences/modify/"+ residenceId
   const residenceLink ="/residence/"+ residenceId
-
 //   const moveToOneResidence = () => { 
 // // Navigate(` ${residenceId}`)
 
 // //    }
     // const [IsAvailable,SetAvailable] = useState(true)
   return (
-    <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-10 mb-20">
+    <div className=" relative flex flex-col w-full md:w-1/2 lg:w-1/3 px-4 md:px-10 mb-20">
     <div className="p-6 bg-white">
         { residence.isAvailable ? <span className="px-2 py-1 text-xs font-bold font-heading border-2 border-blue-300 rounded-full text-blue-300 uppercase bg-white">
            disponible
@@ -41,15 +41,27 @@ const residenceId = residence._id
        
         </p>
       </div>
+      <div className='flex gap-x-2 ml-auto'>
       <Link 
-       to={residenceLink}      className="ml-auto mr-2 flex items-center justify-center w-12 h-12 border rounded-lg hover:border-gray-500 cursor-pointer"
+         to={residenceLink}   
+        className=" flex items-center justify-center w-12 h-12 border rounded-lg hover:border-gray-500 cursor-pointer"
    
       >
+
     <FaEye  size={28} color="black" />
+      </Link    >
+      <Link     to={AdminresidenceLink}
+       className=" flex items-center justify-center w-12 h-12 border rounded-lg hover:border-gray-500 cursor-pointer"
+   
+      >
+
+<FaPen  size={28} color="black" />
       </Link   >
+      </div>
     </div>
   </div>
   )
 }
+
 
 export default ResidenceItem

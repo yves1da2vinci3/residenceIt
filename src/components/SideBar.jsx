@@ -1,9 +1,10 @@
 import React,{useContext} from 'react'
 import {ImCross} from 'react-icons/im'
 import { Link } from 'react-router-dom'
-import {NavContext} from '../context/NavContext'
+import NavAtom from '../recoil/Atoms/NavAtom'
+import {useSetRecoilState} from "recoil"
 function SideBar() {
-  const {setNavState} =  useContext(NavContext)
+  const setNavState =  useSetRecoilState(NavAtom)
   const CloseNav = () =>{
     setNavState(false)
   }
@@ -45,19 +46,19 @@ function SideBar() {
               </a>
             </li>
             <li>
-              <a
-                className="block py-3 px-4 text-coolGray-500 hover:text-coolGray-900 font-medium hover:bg-coolGray-50 rounded-md"
-                href="#"
-              >
-      Residences
-              </a>
+            <Link to='/residences'
+              className="text-coolGray-500 hover:text-coolGray-900 font-medium"
+             
+            >
+              Residences
+            </Link>
             </li>
           </ul>
           <div className="flex flex-wrap">
             <div className="w-full mb-2">
               <Link to="/login"
                 className="inline-block py-2 px-4 w-full text-sm leading-5 text-coolGray-500 hover:text-coolGray-900 bg-transparent font-medium text-center rounded-md"
-                href="#"
+     
               >
                se connecter
               </Link>

@@ -41,7 +41,12 @@ break;
 // For instance, get the download URL: https://firebasestorage.googleapis.com/...
 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
   finish = true
-  localStorage.setItem("videoLink",downloadURL)
+  const video = {
+    Filereference : `/videos/${item.name}`,
+    FileLink : downloadURL
+  }
+  const videoStringified = JSON.stringify(video)
+  localStorage.setItem("videoLink",videoStringified)
 // console.log('File available at', downloadURL);
 });
 }

@@ -91,7 +91,7 @@ function Modal({setModal}) {
             <SpinnerCircular speed={150} size={30} color='white' />
             </div>  :        <input type='submit'
               className="inline-block py-3 px-7 mt-3 mb-6 w-full text-base text-blue-50 font-medium text-center leading-6 bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md shadow-sm"
-    value="signaler la panner"
+    value="signaler la panne"
            /> }
        
   

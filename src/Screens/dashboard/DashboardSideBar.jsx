@@ -5,9 +5,18 @@ import {MdOutlineAdd,MdSettings} from 'react-icons/md'
 import {GoEye} from 'react-icons/go'
 import {BiMessageRoundedError,BiMessageX} from 'react-icons/bi'
 import {Link, useLocation} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
+import {useSetRecoilState} from 'recoil'
+import userAtom from '../../recoil/Atoms/userAtom'
 function DashboardSideBar() {
+  const  setUser = useSetRecoilState(userAtom)
+  const Navigate = useNavigate()
   let  location = useLocation()
-
+  const logoutHandler = () => { 
+    localStorage.removeItem("UserToken")
+    Navigate("/")
+    setUser(null)
+  }
 
   const [residenceDropDownStatus,SetResidenceDropDownStatus] = useState(false)
   return (
@@ -118,10 +127,14 @@ src='https://cdn.worldvectorlogo.com/logos/behance-1.svg'
            
              </span>
              </Link></li>
-               <li> <span className='flex gap-x-2 cursor-pointer hover:bg-blue-900 '>
+               <li>
+                 <Link to="/admin/residences" >
+                  <span className='flex gap-x-2 cursor-pointer hover:bg-blue-900 '>
                <GoEye size={26} color="white" />
             <h1 className='text-white font-bold tracking-wide text-md capitalize '> voir   les residences</h1>
-             </span></li>
+             </span>
+             </Link>
+             </li>
              </ul> : '' }
             </div>
           </li>
@@ -140,7 +153,7 @@ src='https://cdn.worldvectorlogo.com/logos/behance-1.svg'
           
           <div
             className="flex items-center pl-3 py-3 pr-2 text-gray-50 hover:bg-gray-900 rounded"
-            href="#"
+          onClick={logoutHandler}
           >
             <span className="inline-block mr-4">
               <svg

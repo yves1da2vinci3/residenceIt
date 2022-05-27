@@ -1,14 +1,17 @@
 import axios from 'axios'
-import React,{useEffect, useState,useContext} from 'react'
+import React,{useEffect, useState} from 'react'
 import {ImCross} from 'react-icons/im'
 import { SpinnerCircular } from 'spinners-react'
-import {ModalContext} from "../context/ModalContext"
+import ModalAtom from '../recoil/Atoms/ModalAtom'
 import dns from '../utils/dns'
 import {useNavigate} from "react-router-dom"
 import {toast} from 'react-toastify'
+import {useRecoilValue,useSetRecoilState} from 'recoil'
+import RefreshTableAtom from '../recoil/Atoms/RefreshTableAtom'
 function RequestModal({SetRequestModalStatus}) {
   const Navigate = useNavigate()
-  const {ModalInfo,setrefreshTable} = useContext(ModalContext)
+  const  setrefreshTable = useSetRecoilState(RefreshTableAtom)
+  const ModalInfo = useRecoilValue(ModalAtom)
   const [loading,SetLoading] = useState(true);
     const [Data,setData] = useState(true)
     const token =  localStorage.getItem("UserToken")
@@ -61,7 +64,7 @@ function RequestModal({SetRequestModalStatus}) {
             progress: undefined,
             });
             closeModal()
-            setrefreshTable(false)
+            setrefreshTable(true)
             Navigate("/admin/breakdown")
         } catch (error) {
           console.log(error)
@@ -89,7 +92,7 @@ function RequestModal({SetRequestModalStatus}) {
             progress: undefined,
             });
             closeModal()
-            setrefreshTable(false)
+            setrefreshTable(true)
             Navigate("/admin/breakdown")
         } catch (error) {
           console.log(error)
@@ -123,7 +126,7 @@ function RequestModal({SetRequestModalStatus}) {
          <h1 className='text-lg font-semibold tracking-tighter text-left mt-2'> Residence</h1>
          <div className=''>
  <h1 className='text-lg '>Localsation : <span className='font-bold'>{Data.residence.Localisation}</span></h1>
- <h1 className='text-lg capitalize '>details de la localisation : <span className='font-bold'>{Data.residence.Localisation}</span></h1>
+ <h1 className='text-lg capitalize '>details de la localisation : <span className='font-bold'>{Data.residence.MoreInfoLocalisation}</span></h1>
  <h1 className='text-lg capitalize '>Forfait: <span className='font-bold'> {Data.request.Forfeit === 1 ? "29.000"  : Data.request.Forfeit ===2 ? "39.000"  : "49.000" }</span></h1>
  <h1 className='text-lg capitalize '>sexe autorisé : <span className='font-bold'>{Data.residence.sexe} </span></h1>
   </div>

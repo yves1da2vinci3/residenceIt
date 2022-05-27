@@ -1,17 +1,26 @@
-import { Outlet } from "react-router-dom";
-
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import userAtom from "../recoil/Atoms/userAtom"
 import DashboardSideBar from "../Screens/dashboard/DashboardSideBar";
+import { useRecoilValue } from "recoil";
 
 const SidebarLayout = () => {
-//   const me = useMeStoreValue();
-//   const navigate = useNavigate();
-//   const { pathname } = useLocation();
+  const User= useRecoilValue(userAtom)
 
-//   if (pathname.startsWith("/admin")) {
-//     if (!me?.roles.includes(6)) {
-//       navigate("/incomes");
-//     }
-//   }
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  useEffect(()=>{
+    if(Object.keys(User).length > 0) {
+      if (pathname.startsWith("/admin")) {
+        if (!User?.isAdmin) {
+          navigate("/user");
+        }
+      }
+    }
+
+  
+  },[])
+
 
 
   return (

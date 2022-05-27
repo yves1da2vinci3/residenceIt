@@ -5,7 +5,7 @@ Routes,
 } from "react-router-dom";
 import './index.css'
 import {ToastContainer} from 'react-toastify'
-
+import 'react-toastify/dist/ReactToastify.css';
 
 // importation des screens
 import HomeScreen from "./Screens/HomeScreen";
@@ -20,20 +20,14 @@ import SidebarLayout from "./Layout/SidebarLayout";
 import RequestUserTable from './Screens/dashboard/RequestUserTable'
 import AdminUserScreen from "./Screens/dashboard/UserScreen";
 import BreakdownScreen from "./Screens/dashboard/BreakdownScreen";
+import SeeAllResidencesScreen from "./Screens/dashboard/SeeAllResidencesScreen";
+import AdminModifyResidence from "./Screens/dashboard/AdminModifyResidence";
 // importation de NavContext
-import NavContext from "./context/NavContext";
-import AuthContext from "./context/AuthContext";
-import SignupContext from "./context/SignupContext";
-import ModalContext from "./context/ModalContext";
-
+import { RecoilRoot } from "recoil";
 function App() {
 
   return ( 
-    <ModalContext>
-     
-    <SignupContext>
-    <AuthContext>
-    <NavContext>
+<RecoilRoot>
       <ToastContainer />
     <Router>
   <Routes>
@@ -42,6 +36,8 @@ function App() {
     <Route  path="/"  element={ <HomeScreen/>} />
     <Route  path="/residence/:IdResidence"  element={ <OneResidence/>} />
     <Route  path="/residences"  element={ <ResidenceScreen/>} />
+    <Route  path="/admin/residences"  element={ <SeeAllResidencesScreen/>} />
+    <Route  path="/admin/residences/modify/:IdResidence"  element={ <AdminModifyResidence/>} />
    
     <Route   element={<SidebarLayout />}>
       <Route path="/admin/request"  element={ <RequestUserTable /> } />
@@ -55,11 +51,7 @@ function App() {
 
   </Routes>
   </Router>
-  </NavContext>
-  </AuthContext>
-  </SignupContext>
-  </ModalContext>
-
+  </RecoilRoot>
   )
 }
 

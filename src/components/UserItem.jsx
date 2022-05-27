@@ -1,9 +1,10 @@
 import React, { useState ,useContext} from 'react'
 import {FaEye} from 'react-icons/fa'
-import {ModalContext} from "../context/ModalContext"
+import ModalAtom from '../recoil/Atoms/ModalAtom'
+import {useSetRecoilState} from "recoil"
 function UserItem({request,SetRequestModalStatus}) {
   const date = request.createdAt.split('T')[0].split("-").reverse().join("/")
-  const {setModalInfo} = useContext(ModalContext)
+  const setModalInfo = useSetRecoilState(ModalAtom)
  const OpenModal = () =>{
   setModalInfo(request._id)
   SetRequestModalStatus(true)
