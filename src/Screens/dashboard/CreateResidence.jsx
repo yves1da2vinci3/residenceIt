@@ -9,6 +9,7 @@ import dns from '../../utils/dns'
 import { useNavigate  } from 'react-router-dom'
 import { SpinnerCircular } from 'spinners-react'
 import {toast} from 'react-toastify'
+import  residenceUrl  from "../../assets/maison-design-avec-terrasse-en-bois.jpg"
 function CreateResidence() {
   const token =  localStorage.getItem("UserToken")
   const config = {
@@ -79,7 +80,7 @@ function CreateResidence() {
    }
   return (
     <section
-  className="relative  p-5 md:py-32 bg-white md:overflow-none overflow-x-hidden "
+  className="  flex flex-col md:grid md:grid-cols-2 place-items  p-5 md:py-16 bg-white md:overflow-none overflow-x-hidden "
   style={{
     backgroundImage: 'url("flex-ui-assets/elements/pattern-white.svg")',
     backgroundPosition: "center"
@@ -88,17 +89,11 @@ function CreateResidence() {
     { VisualState ? <VisualResidence  SetVisual={SetVisual} /> : " "}
     { VideoUpload ? <DropFileInputVideo  SetVideoUpload={ SetVideoUpload}  /> : " "}
     { imageUpload ? <DragFileInputImage  SetImageUpload={ SetImageUpload}  /> : " "}
-  <div className="container px-4 mb-16">
-    <div className="w-full md:w-3/5 lg:w-1/2">
-      <div className="max-w-sm mx-auto">
+  <div className="container px-4 mb-16 ">
+ 
+     
         <div className="mb-6 text-center">
-          <a className="inline-block mb-6" href="#">
-            <img
-              className="h-16"
-              src="flex-ui-assets/logos/flex-circle-green.svg"
-              alt=""
-            />
-          </a>
+   
           <h3 className="mb-4 text-2xl md:text-3xl font-bold">
             Adminsitation de MyRESIDENCE IT
           </h3>
@@ -174,10 +169,10 @@ function CreateResidence() {
         
         </form>
         <div className='flex flex-wrap md:flex-nowrap  w-[45rem] gap-x-2 mr-48 '>
-        <div  onClick={OpenVisual} className='flex w-96 h-[4.5rem] self-center mt-8 bg-white cursor-pointer hover:bg-blue-500 shadow-lg rounded-lg justify-center items-center gap-x-3'>
+        {/* <div  onClick={OpenVisual} className='flex w-96 h-[4.5rem] self-center mt-8 bg-white cursor-pointer hover:bg-blue-500 shadow-lg rounded-lg justify-center items-center gap-x-3'>
         <FaEye  size={28} color="black" />
         <p className='text-lg tracking-tight font-semibold'>Avoir un apercu</p>
-             </div>
+             </div> */}
         <div  onClick={SetVideoUpload} className='flex w-96 h-[4.5rem] self-center mt-8 bg-white cursor-pointer hover:bg-yellow-500 shadow-lg rounded-lg justify-center items-center gap-x-3'>
         <RiVideoUploadFill  size={28} color="black" />
         <p className='text-lg tracking-tight font-semibold'>telecharger la video</p>
@@ -187,14 +182,13 @@ function CreateResidence() {
         <p className='text-lg tracking-tight font-semibold'>telecharger les images</p>
              </div>
         </div>
-      </div>
-    </div>
+   
   </div>
-  <img
-    className="md:absolute md:top-0 md:right-0 mx-auto md:h-full md:w-2/5 lg:w-1/2 md:object-cover"
-    src="https://www.igc-construction.fr/sites/default/files/2020-11/maison-design-avec-terrasse-en-bois.jpg"
-    alt=""
-  />
+  <div
+   style={{ backgroundImage :  ` url(${residenceUrl})` }}
+  className='w-full h-full'>
+  
+  </div>
 </section>
 
   )

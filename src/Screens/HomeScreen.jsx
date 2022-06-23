@@ -70,17 +70,12 @@ function HomeScreen() {
 {/* long speech */}
 <div className='flex flex-col p-4 bg-white justify-between' >
 <h1 className='text-blue-400 font-semibold text-[2rem]'>A propos de nous</h1>
-<p className='mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight' >Nous sommes ce que vous recherchez en matiere de <span className='text-blue-500 font-bold'>logement estudiantin</span> dans la ville d'abidjan.</p>
+<p className='mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight' >Nous sommes ce que vous recherchez en matiere de <span className='text-blue-500 font-bold'>logement estudiantin</span> en Côte d'ivoire. </p>
 
-<p className='mb-8 text-xl leading-8  tracking-tight md:text-2xl text-gray-500 font-medium '>  We’re different. Flex is the only saas business platform that lets you
-            run your business on one platform, seamlessly across all digital
-            channels.
-            We’re different. Flex is the only saas business platform that lets you
-            run your business on one platform, seamlessly across all digital
-            channels.
-            We’re different. Flex is the only saas business platform that lets you
-            run your business on one platform, seamlessly across all digital
-            channels.
+<p className='mb-8 text-xl leading-8  tracking-tight md:text-2xl text-gray-500 font-medium '>  
+Lancé depuis septembre 2020 avec 18 étudiants ,
+Résidence IT connaît un bon succès, Nous hébergeons aujourd’hui plus de 65 étudiants dans nos locaux. Nous disposons actuellement de cinq (5) residence estudiantinne dans la zone d'Abidjan sud.
+Aujourd'hui résidence IT est la destination favorite des étudiants de  nombreuses école tels que l'ESATIC et l'INFAS.
           </p>
 
           <div className=' flex flex-wrap '>
@@ -104,15 +99,15 @@ function HomeScreen() {
 </div>
     </div>
     {/* comment ca marche  */}
-    <div className='h-auto mt-4 flex flex-col md:justify-center'>
+    <div className='h-auto mt-8 flex flex-col md:justify-center'>
 <h1 className='mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight text-center capitalize'> Comment ça<span className='text-blue-500 font-bold'> marche</span>  ?</h1>
 <p className='mb-8 text-center text-xl leading-8  tracking-tight md:text-2xl text-gray-500 font-medium '>   ici , sont descrits les differentes etapes pour avoir accés a residence IT.          </p>
 
 {/* card qui explique */}
       <div className='flex flex-wrap px-2 gap-2 justify-center mt-8 '>
-<div className=' h-96 w-96 md:h-[28rem] md:w-[28rem] rounded-md shadow-md bg-white hover:bg-blue-600 hover:text-white cursor-pointer p-3' >
+<div className='  h-96 w-96 md:h-[28rem] md:w-[28rem] rounded-md shadow-md bg-white hover:bg-blue-600 hover:text-white cursor-pointer p-3' >
 {/* icons et titres */}
-<div className='flex px-2 items-center' >
+<div className='flex px-2 items-center ' >
   <div className='bg-black shadow-md w-20 h-20 rounded justify-center items-center flex'>
 <ImSearch size={36} color='white' />
   </div>
@@ -120,10 +115,13 @@ function HomeScreen() {
 
 </div>
 {/* more informatons */}
-<p className='mb-8 text-center text-md leading-8  tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   ici , sont descrits les differentes etapes pour avoir accés a residence IT.          </p>
+<p className='mb-8 text-md text-left leading-8  tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   
+La première étape consiste a vérifier  en fonction de l'emplacement de votre établissement et de votre budget, la disponibilité d'une résidence
+Les résidences des hommes et des femmes sont distinctes. Vous devez bien évidemment choisir la residence  en tenant compte de ce paramètre .
+     </p>
 </div>
 
-<div className=' h-96 w-96 md:h-[28rem] md:w-[28rem] rounded-md shadow-md bg-white hover:bg-blue-600 hover:text-white cursor-pointer p-3' >
+<div className=' h-96 w-96 md:h-auto md:w-[28rem] rounded-md shadow-md bg-white hover:bg-blue-600 hover:text-white cursor-pointer p-3' >
 {/* icons et titres */}
 <div className='flex px-2 items-center' >
   <div className='bg-yellow-500 shadow-md w-20 h-20 rounded justify-center items-center flex'>
@@ -133,7 +131,40 @@ function HomeScreen() {
 
 </div>
 {/* more informatons */}
-<p className='mb-8 text-center text-md leading-8  tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   ici , sont descrits les differentes etapes pour avoir accés a residence IT.          </p>
+<p className='mb-8 text-center text-md leading-5  tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>  
+<ul className='text-left'>
+
+  <li>➢ 
+  # offre it-6
+     <p>6 par chambre, factures d'eau et electricité prises en charge</p> 
+     <p>#  29.000f cfa / mois / personne</p> 
+  
+
+  </li>
+  <li>➢ 
+  # offre it-4
+     <p>4 par chambre ,factures d'eau et electricité prises en charge</p> 
+     <p>#  39.000f cfa / mois / personne</p> 
+  
+
+  </li>
+  <li>➢ 
+  # offre it-3
+     <p>3 par chambre, factures d'eau et electricité prises en charge</p> 
+     <p>#  49.000f cfa / mois / personne</p> 
+  
+
+  </li>
+  <li>➢ 
+  # offre it-2
+     <p>2 par chambre, factures d'eau et electricité prises en charge</p> 
+     <p>#  59.000f cfa / mois / personne</p> 
+  
+
+  </li>
+</ul>
+
+</p>
 
 
 </div>
@@ -147,7 +178,10 @@ function HomeScreen() {
 
 </div>
 {/* more informatons */}
-<p className='mb-8 text-center text-md leading-8  tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   ici , sont descrits les differentes etapes pour avoir accés a residence IT.          </p>
+<p className='mb-8 text-left text-md leading-8  tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   
+Prenez le soin d'enregistrer soigneusement vos coordonnées et surtout de préciser votre établissement.
+Tâchez aussi de mettre un mail et un contact valide afin que vous puissiez être contacter  en cas de nécessité.
+</p>
 </div>
 <div className=' h-96 w-96 md:h-[28rem] md:w-[28rem] rounded-md shadow-md bg-white hover:bg-blue-600 hover:text-white cursor-pointer p-3' >
 {/* icons et titres */}

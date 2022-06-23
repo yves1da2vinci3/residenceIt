@@ -1,8 +1,8 @@
 import React,{useEffect, useRef, useState} from 'react'
 import {FaEye} from 'react-icons/fa'
 import {RiVideoUploadFill,RiImageAddFill} from 'react-icons/ri'
- import DropFileInputVideo from '../../components/DragFileInputVideo'
- import DragFileInputImage from '../../components/DragFileInputImage'
+ import DropFileInputVideoModify from '../../components/DragFileInputVideoModify'
+ import DragFileInputImageModify from '../../components/DragFileInputImageModify'
 import axios from 'axios'
 import dns from '../../utils/dns'
 import { useNavigate, useParams  } from 'react-router-dom'
@@ -37,13 +37,13 @@ function AdminModifyResidence() {
 const OpenUploadImage = () => {
     SetImageUpload(true)
   }
-  //- tableau dees index des images supprimés 
+  //- tableau des fileReferences des images supprimés 
   const [deleteArraysIndex,setdeleteArraysIndex] = useState([])
  
   //- videoContainer 
   const VideoContainer = useRef(null)
  //- toggle pour le switch
-      const [toggle, setToggle] = useState(true);
+      const [toggle, setToggle] = useState();
 
       const toggleClass = ' transform translate-x-5';
      // defintion de la fonctio submitHandler
@@ -57,6 +57,7 @@ const OpenUploadImage = () => {
         }}
   
        const newImagesUrls = []
+       let fileReference ="" ;
        let updatedVideo = false
        let updatedImage = false
        let videoUrl = ""
@@ -65,17 +66,18 @@ const OpenUploadImage = () => {
         const Localisation = communeRef.current.value
         const MoreInfoLocalisation = LocalisationRef.current.value
         //verfication d'ajout  d'mage
-        if(localStorage.getItem("imagesLinks").length >3 ) {
+        if(localStorage.getItem("imagesLinks") ) {
           const NewimageUrlsString =    JSON.parse(localStorage.getItem('imagesLinks'))
           NewimageUrlsString.forEach(imgString => {
            newImagesUrls.push(JSON.parse(imgString))
           });
         }
        
-       if(localStorage.getItem("videoLink").length > 0){
+       if(localStorage.getItem("videoLink")){
 
          videoUrl = JSON.parse(localStorage.getItem("videoLink")) 
        }
+
        if(newImagesUrls.length > 0) {
         updatedImage = true
              }
@@ -101,6 +103,11 @@ const OpenUploadImage = () => {
             });
             localStorage.setItem("imagesLinks",JSON.stringify([]))
             localStorage.setItem("videoLink",  "" )
+            deleteArraysIndex.forEach( (reference) =>{
+              fileReference = ref(storage,reference)
+      deleteObject(fileReference).then( success => console.log(success)).catch(err => console.log(err))
+    }
+             )
             Navigate('/admin/residences',{ replace : true })
         } catch (error) {
           toast.error(` ${error}`, {
@@ -119,7 +126,7 @@ const OpenUploadImage = () => {
        const deleteVideo = () => { 
         setvideoLoading(true)
         console.log(video)
-        const Filereference = video.FileReference
+        const Filereference = video.Filereference
         const desertRef = ref(storage,Filereference);
         deleteObject(desertRef).then(() => {
           setvideoLoading(false)
@@ -181,8 +188,8 @@ useEffect(() => {
 
   >
       {/* { VisualState ? <VisualResidence  SetVisual={SetVisual} /> : " "} */}
-      { VideoUpload ? <DropFileInputVideo  SetVideoUpload={ SetVideoUpload}  /> : " "}
-      { imageUpload ? <DragFileInputImage  SetImageUpload={ SetImageUpload}  /> : " "}
+      { VideoUpload ? <DropFileInputVideoModify setVideo={Setvideo}  SetVideoUpload={ SetVideoUpload}  /> : " "}
+      { imageUpload ? <DragFileInputImageModify imageUrls={imageUrls}  SetimageUrls={SetimageUrls} SetImageUpload={ SetImageUpload}  /> : " "}
     
       <div className="w-full md:w-3/5 lg:w-1/2">
         <div className="max-w-sm mx-auto">
@@ -261,7 +268,7 @@ useEffect(() => {
           { loading ? <div className='bg-blue-500 p-3 rounded flex items-center justify-center ' >
               <SpinnerCircular speed={150} size={30} color='white' />
               </div>  :        <input type='submit'
-                className="inline-block py-3 px-7 mb-6 w-full text-base text-blue-50 font-medium text-center leading-6 bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md shadow-sm"
+                className="inline-block py-3 px-7 cursor-pointer mb-6 w-full text-base text-blue-50 font-medium text-center leading-6 bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md shadow-sm"
       value="  Modfier la residence"
              /> }
                     

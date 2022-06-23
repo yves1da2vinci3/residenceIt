@@ -174,8 +174,7 @@ function OneResidence() {
             
         
             <p className="max-w-md text-gray-500">
-              Maecenas commodo libero ut molestie dictum. Morbi placerat eros id
-              porttitor sagittis.
+              {residence.Description}
             </p>
           </div>
           <div className="flex mb-12">

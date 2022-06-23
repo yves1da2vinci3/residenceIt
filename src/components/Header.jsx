@@ -22,12 +22,11 @@ function Header() {
             Header
           </span> */}
           <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">
-            A small business is only as good as its tools.
+            Bienvenue sur <span className='text-blue-500'> Residence  IT</span> 
           </h1>
           <p className="mb-8 text-lg md:text-xl text-coolGray-500 font-medium">
-            We’re different. Flex is the only saas business platform that lets you
-            run your business on one platform, seamlessly across all digital
-            channels.
+            Nous mettons a votre diposition des chambres meublées ,situés à quelques minutes de marche de votre établissement,dotées d'équipements fonctionnels vous 
+            premettant d'avoir un sejour agréable , et surtout de vous concentrer sur vos études.
           </p>
           <div className="flex flex-wrap">
             <div className="w-full md:w-auto py-1 md:py-0 md:mr-4">

@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import {ImCross} from 'react-icons/im'
-import { ref, deleteObject } from "firebase/storage";
 import {storage} from '../Firebase'
 import { SpinnerCircular } from 'spinners-react'
 
@@ -16,25 +15,23 @@ const [Loading,setLoading] = useState(false)
       index = 0
     }
   
+    // recuperation de la fileRefernce
     const FileReference = imageUrls[index].Filereference
     console.log(FileReference)
-    const desertRef = ref(storage,FileReference);
+    
     deleteArraysIndex.push(FileReference)
     const NewFileRefernceArray = [...deleteArraysIndex]
     setdeleteArraysIndex(NewFileRefernceArray)
-    console.log(deleteArraysIndex)
-    // Delete the file
-    deleteObject(desertRef).then(() => {
-     setLoading(false)
-      imageUrls.splice(index,1)
-      console.table( imageUrls)
-      const newArrays = [...imageUrls]
-      console.log(newArrays)
-      SetimageUrls(newArrays)
-    }).catch((error) => {
-     console.log(error)
-    });
-    // Delete the file
+    // console.log(deleteArraysIndex)
+    // Delete the file du state
+
+    imageUrls.splice(index,1)
+    console.table( imageUrls)
+    const newArrays = [...imageUrls]
+    console.log(newArrays)
+    setLoading(false)
+    SetimageUrls(newArrays)
+  
    }
 
   return (
@@ -43,7 +40,7 @@ const [Loading,setLoading] = useState(false)
        { Loading ?  <SpinnerCircular speed={150} size={25} color='red' /> : <ImCross  size={15} color='red ' /> }
     
     </div>
-    <img className='object-cover' src={imgUrl} />
+    <img className='object-cover h-[5rem] w-[5rem] '  src={imgUrl} />
     </div>
   )
 }

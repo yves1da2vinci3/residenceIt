@@ -44,7 +44,7 @@ function FeedBack() {
                     </svg>
                   </span>
                   <p className="text-lg font-bold text-white">
-                    +44 20457523 00 01
+                     (+225) 27 21 54 02 21  <br/>     (+225) 07 87 08 90 13
                   </p>
                 </div>
               </div>
@@ -66,7 +66,7 @@ function FeedBack() {
                     </svg>
                   </span>
                   <p className="text-lg font-bold text-white">
-                    support@shuffle.dev
+                    resdenceit.info@gmail.com
                   </p>
                 </div>
               </div>
@@ -92,14 +92,14 @@ function FeedBack() {
                     </svg>
                   </span>
                   <p className="text-lg font-bold text-white">
-                    Bayswater, London
+                    Treichville, Abidjan
                   </p>
                 </div>
               </div>
             </div>
             <div className="max-w-xs">
               <p className="text-gray-400">
-                The one est bad, semper six at sem quis, congue 8 AM - 8 PM
+               disponible entre 8h et 17h
               </p>
             </div>
           </div>
