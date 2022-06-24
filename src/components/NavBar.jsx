@@ -3,6 +3,7 @@ import {IoIosMenu} from 'react-icons/io'
 import NavAtom from '../recoil/Atoms/NavAtom'
 import {useSetRecoilState} from "recoil"
 import {Link} from 'react-router-dom'
+import ResidenceItLogo from '../assets/ResidenceITLogo.jpg'
  function Menu() {
   const setNavState =  useSetRecoilState(NavAtom)
   const ToggleNav = () =>{
@@ -10,18 +11,18 @@ import {Link} from 'react-router-dom'
   }
   return (
    <section className="bg-white">
-  <nav className="flex justify-between p-6 px-4">
+  <nav className="flex justify-between md:p-6 px-4">
     <div className="flex justify-between items-center w-full">
       <div className="xl:w-1/3">
         <a className="block max-w-max" href="#">
           <img
-            className="h-8"
-            src="https://cdn.worldvectorlogo.com/logos/behance-1.svg"
+            className="md:h-24 h-16"
+            src={ResidenceItLogo}
             alt=""
           />
         </a>
       </div>
-      <div className="hidden xl:block xl:w-1/3">
+      <div className="hidden flex-2 xl:block xl:w-[40%] ">
         <ul className="flex justify-center">
           <li className="mr-12">
             <a
@@ -34,15 +35,15 @@ import {Link} from 'react-router-dom'
           <li className="mr-12">
             <a
               className="text-coolGray-500 hover:text-coolGray-900 font-medium"
-              href="#"
+              href="#about"
             >
               A propos
             </a>
           </li>
           <li className="mr-12">
             <a
-              className="text-coolGray-500 hover:text-coolGray-900 font-medium"
-              href="#"
+              className="text-coolGray-500  hover:text-coolGray-900 font-medium"
+              href="#howitworks"
             >
               comment ca marche ?
             </a>
@@ -65,7 +66,7 @@ import {Link} from 'react-router-dom'
           >
       se connecter
           </Link>
-          <Link to='/signup'
+          <Link to='/residences'
             className="inline-block py-2 px-4 text-sm leading-5 text-blue-50 bg-blue-500 hover:bg-blue-600 font-medium focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md"
            
           >

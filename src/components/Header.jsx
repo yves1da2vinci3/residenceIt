@@ -1,6 +1,7 @@
 import React, {useRef,useState} from 'react'
 import  VideoUrl  from '../public/video/videoplayback.mp4'
 import {BsPlayFill,BsFillPauseFill} from 'react-icons/bs'
+import { Link } from 'react-router-dom';
 function Header() {
   const [playing, setPlaying] = useState(false);
   const videoRef = useRef(null);
@@ -38,12 +39,12 @@ function Header() {
               </a>
             </div>
             <div className="w-full md:w-auto py-1 md:py-0">
-              <a
+              <Link
                 className="inline-block py-5 px-7 w-full text-base md:text-lg leading-4 text-coolGray-800 font-medium text-center bg-white hover:bg-coolGray-100 focus:ring-2 focus:ring-coolGray-200 focus:ring-opacity-50 border border-coolGray-200 rounded-md shadow-sm"
-                href="#"
+               to='/residences'
               >
                s'enregistrer
-              </a>
+              </Link>
             </div>
           </div>
         </div>

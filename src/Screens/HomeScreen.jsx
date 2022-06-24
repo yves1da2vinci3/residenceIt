@@ -1,4 +1,4 @@
-import React ,{useContext,useEffect} from 'react'
+import React ,{useContext,useEffect, useState} from 'react'
 import NavBar from '../components/NavBar'
 import Header from '../components/Header'
 import {ImSearch,ImUserPlus,ImHome,ImFolder} from 'react-icons/im'
@@ -11,9 +11,33 @@ import dns from '../utils/dns'
 import NavAtom from '../recoil/Atoms/NavAtom'
 import userAtom from "../recoil/Atoms/userAtom"
 import {useRecoilValue,useSetRecoilState} from "recoil"
+import { SpinnerCircular } from 'spinners-react';
+
 function HomeScreen() { 
+  // appel de residences
+  const [residences,setResidences] = useState([])
+  const [loading,SetLoading] = useState(true);
+  useEffect(() => {
+    SetLoading(true)
+   const FetchResidences = async () => {
+    try {
+      const {data} = await axios.get(` ${dns}/api/residences`,{
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      setResidences(data)
+      SetLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
+   }
+   FetchResidences()
+    },[])
+    //recuperer les valeurs de NAV
   const NavState = useRecoilValue(NavAtom)
   const setUser = useSetRecoilState(userAtom)
+  
   useEffect(() =>{
     const FecthUserProfile = async  () => { 
       const token =  localStorage.getItem("UserToken")
@@ -57,8 +81,8 @@ function HomeScreen() {
  
     <Header />
     {/* a propos de nous */}
-    <div className='h-screen  flex flex-col   md:grid md:grid-cols-2'>
-      <div className='bg-white hidden  h-full md:flex items-center justify-center relative'>
+    <div className='h-auto  flex flex-col   md:grid md:grid-cols-2'>
+      <div className='bg-white hidden  h-auto md:flex items-center justify-center relative'>
    <div className='h-4/6 w-2/3 rounded-r-[4rem] bg-blue-100 shadow-md absolute left-0 top-4 '>
       {/* fond blue */}
    </div>
@@ -68,7 +92,7 @@ function HomeScreen() {
       </div>
      
 {/* long speech */}
-<div className='flex flex-col p-4 bg-white justify-between' >
+<div id='about' className='flex flex-col p-4 bg-white justify-between' >
 <h1 className='text-blue-400 font-semibold text-[2rem]'>A propos de nous</h1>
 <p className='mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight' >Nous sommes ce que vous recherchez en matiere de <span className='text-blue-500 font-bold'>logement estudiantin</span> en Côte d'ivoire. </p>
 
@@ -99,7 +123,7 @@ Aujourd'hui résidence IT est la destination favorite des étudiants de  nombreu
 </div>
     </div>
     {/* comment ca marche  */}
-    <div className='h-auto mt-8 flex flex-col md:justify-center'>
+    <div id='howitworks' className='h-auto mt-8 flex flex-col md:justify-center'>
 <h1 className='mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight text-center capitalize'> Comment ça<span className='text-blue-500 font-bold'> marche</span>  ?</h1>
 <p className='mb-8 text-center text-xl leading-8  tracking-tight md:text-2xl text-gray-500 font-medium '>   ici , sont descrits les differentes etapes pour avoir accés a residence IT.          </p>
 
@@ -193,7 +217,12 @@ Tâchez aussi de mettre un mail et un contact valide afin que vous puissiez êtr
 
 </div>
 {/* more informatons */}
-<p className='mb-8 text-center text-md leading-8  tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   ici , sont descrits les differentes etapes pour avoir accés a residence IT.          </p>
+<p className='mb-8 text-left text-md leading-8  tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   
+La dernière étape consiste à visiter votre chambre choisir un lit, effectuer les paiements et signer le contrat.
+Aussitôt vous recevez  les clés et un reçu de paiement.
+
+Si vous êtes hors de la ville, pas de panique. Vous avez également la possibilité d'effectuer vos inscriptions à travers la plateforme, sans vous déplacer.
+ </p>
 </div>
 
 
@@ -204,15 +233,13 @@ Tâchez aussi de mettre un mail et un contact valide afin que vous puissiez êtr
 
     {/* les maisons */}
     <div className='h-auto mt-4 flex flex-col md:justify-center '> 
-    <h1 className='mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight text-center capitalize'> Voici quelqu'unes de nos<span className='text-blue-500 font-bold'> residences</span>  deja fonctionels</h1>
-    <p className='mb-8 text-center text-xl leading-8  tracking-tight md:text-2xl text-gray-500 font-medium '>   ici , sont descrits les differentes etapes pour avoir accés a residence IT.          </p>
+    <h1 className='mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight text-center '> Voici quelqu'unes de nos<span className='text-blue-500 font-bold'> residences</span>  deja fonctionels</h1>
+   
 
 <div className='flex flex-wrap px-4 relative gap-3 md:justify-center'>
-<Residence />
-<Residence />
-<Residence />
-<Residence />
-<Residence />
+{ loading ? <div className="flex h-screen justify-center items-center  w-screen" > <SpinnerCircular speed={100} size={50} color="blue" /></div> : (   residences.map(residence => (
+              <Residence key={residence._id}  residence={residence} />
+            )))}
 </div>
 
 <div  onClick={moveToResidences} className="w-72 self-center mt-8  p-4 cursor-pointer">
