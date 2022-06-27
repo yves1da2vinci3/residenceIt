@@ -6,8 +6,8 @@ function Header() {
   const [playing, setPlaying] = useState(false);
   const videoRef = useRef(null);
   const onVideoPress = () => {
-      if(playing) {
-          videoRef.current.pause();
+    if(playing) {
+    videoRef.current.pause();
           setPlaying(false)
       } else {
           videoRef.current.play();
