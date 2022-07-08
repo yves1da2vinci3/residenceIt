@@ -43,7 +43,7 @@ function SideBar() {
                 className="block py-3 px-4 text-coolGray-500 hover:text-coolGray-900 font-medium hover:bg-coolGray-50 rounded-md"
                 href="##howitworks"
               >
-          comment ca marche ?
+          Procédure
               </a>
             </li>
             <li>

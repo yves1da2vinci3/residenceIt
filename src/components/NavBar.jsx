@@ -45,7 +45,7 @@ import ResidenceItLogo from '../assets/ResidenceITLogo.png'
               className="text-coolGray-500  hover:text-coolGray-900 font-medium"
               href="#howitworks"
             >
-              comment ca marche ?
+           Procédure
             </a>
           </li>
           <li>

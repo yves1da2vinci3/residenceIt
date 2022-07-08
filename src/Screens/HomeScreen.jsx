@@ -12,7 +12,7 @@ import NavAtom from '../recoil/Atoms/NavAtom'
 import userAtom from "../recoil/Atoms/userAtom"
 import {useRecoilValue,useSetRecoilState} from "recoil"
 import { SpinnerCircular } from 'spinners-react';
-
+import imagurl from  '../assets/Belle.jpg'
 function HomeScreen() { 
   // appel de residences
   const [residences,setResidences] = useState([])
@@ -87,7 +87,7 @@ function HomeScreen() {
       {/* fond blue */}
    </div>
    <div className='h-4/6 w-2/3 z-10  '>
-<img src='https://www.igc-construction.fr/sites/default/files/2020-11/maison-design-avec-terrasse-en-bois.jpg' className='object-fill h-full rounded-r-[4rem] shadow-lg ' />
+<img src={imagurl} className='object-fill h-full rounded-r-[4rem] shadow-lg ' />
    </div>
       </div>
      
@@ -145,7 +145,7 @@ Les résidences des hommes et des femmes sont distinctes. Vous devez bien évide
      </p>
 </div>
 
-<div className=' h-96 w-96 md:h-auto md:w-[28rem] rounded-md shadow-md bg-white hover:bg-blue-600 hover:text-white cursor-pointer p-3' >
+<div className=' min-h-96 w-96 md:h-auto md:w-[28rem] rounded-md shadow-md bg-white hover:bg-blue-600 hover:text-white cursor-pointer p-3' >
 {/* icons et titres */}
 <div className='flex px-2 items-center' >
   <div className='bg-yellow-500 shadow-md w-20 h-20 rounded justify-center items-center flex'>
