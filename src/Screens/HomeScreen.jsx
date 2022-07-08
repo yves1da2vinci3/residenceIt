@@ -139,7 +139,7 @@ Aujourd'hui résidence IT est la destination favorite des étudiants de  nombreu
 
 </div>
 {/* more informatons */}
-<p className='mb-8 text-md text-left leading-8  tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   
+<p className='mb-8 text-md text-left leading-8 hover:text-white tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   
 La première étape consiste a vérifier  en fonction de l'emplacement de votre établissement et de votre budget, la disponibilité d'une résidence
 Les résidences des hommes et des femmes sont distinctes. Vous devez bien évidemment choisir la residence  en tenant compte de ce paramètre .
      </p>
@@ -155,7 +155,7 @@ Les résidences des hommes et des femmes sont distinctes. Vous devez bien évide
 
 </div>
 {/* more informatons */}
-<p className='mb-8 text-center text-md leading-5  tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>  
+<p className='mb-8 text-center text-md leading-5 hover:text-white tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>  
 <ul className='text-left'>
 
   <li>➢ 
