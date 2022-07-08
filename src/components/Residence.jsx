@@ -8,7 +8,7 @@ function Residence({residence}) {
   {/* image et location */}
 <div className='w-full relative'>
   {/* image */}
-<img src={residence.imageUrls[0].FileLink} className='h-72 rounded-lg w-full ' />
+<img src={residence.imageUrls[0].FileLink} className='h-76  rounded-lg w-76 ' />
 {/* location */}
 <div className='w-auto h-12 bg-white p-2 absolute rounded-full flex justify-center items-center top-0'>
 { residence.isAvailable ? <span className="px-2 py-1 text-xs font-bold font-heading border-2 border-blue-300 rounded-full text-blue-300 uppercase bg-white">

@@ -147,7 +147,7 @@ function CreateResidence() {
             className="block mb-2 text-gray-800 font-medium leading-6"
             htmlFor=""
           >
-           selectioner votre sexe
+           Homme/Femme
           </label>
           <select  ref={sexInput}
                 className="pl-6 pr-10 py-4 bg-gray-50 font-semibold font-heading text-gray-500 border rounded-md w-full"

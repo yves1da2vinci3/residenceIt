@@ -3,7 +3,7 @@ import {IoIosMenu} from 'react-icons/io'
 import NavAtom from '../recoil/Atoms/NavAtom'
 import {useSetRecoilState} from "recoil"
 import {Link} from 'react-router-dom'
-import ResidenceItLogo from '../assets/ResidenceITLogo.jpg'
+import ResidenceItLogo from '../assets/ResidenceITLogo.png'
  function Menu() {
   const setNavState =  useSetRecoilState(NavAtom)
   const ToggleNav = () =>{

@@ -10,6 +10,7 @@ import Modal from '../../components/Modal'
 import axios from 'axios'
 import dns from '../../utils/dns'
 import {Link, useNavigate} from 'react-router-dom'
+import ResidenceItLogo from '../../assets/ResidenceITLogo.jpg'
 function UserScreen() {
 
   const [user,setUser] = useState({})
@@ -43,14 +44,14 @@ const logoutHandler = () => {
   setUser(null)
 }
   return (
-    <div className='flex flex-col p-4  relative  '>
+    <div className='flex flex-col   relative  '>
             { ModalState ? <Modal   setModal={SetModal} /> : "" }
       <div className='flex  gap-x-2 justify-between'>
 <h1 className=' md:text-4xl font-semibold tracking-wide'>Bienvenue sur votre profil</h1>
 <div className='flex gap-x-3 items-center '>
 <div   onClick={logoutHandler}  className='flex flex-col w-24 h-24 rounded-full self-center text-red-600 hover:text-white bg-white cursor-pointer hover:bg-red-500 shadow-lg  justify-center items-center gap-x-3'>
         <RiLogoutCircleLine size={24}  className=' fill-current '/>
-        <p className=' text-sm tracking-tight font-semibold  '> se deconnecter</p>
+        <p className=' text-sm tracking-tight font-semibold  '> deconnexion</p>
              </div>
 <span className='flex gap-x-1 items-center'>
   { isGirl ?   <img src='https://us.123rf.com/450wm/apoev/apoev1903/apoev190300160/124274049-person-white-photo-placeholder-woman-silhouette-on-gray-background.jpg?ver=6' 
@@ -66,7 +67,7 @@ const logoutHandler = () => {
 </div>
 {/* services pour utilisateur */}
 
-<div className=' flex    h-auto  justify-center md:justify-start mt-20 gap-2 flex-wrap '>
+<div className=' flex    h-full  w-full items-center justify-center  mt-20 gap-2 flex-wrap '>
 <Link to='/user/profile' >
   <div className='flex flex-col gap-y-5  h-[28rem] md:h-[38rem] justify-center items-center p-4 cursor-pointer hover:bg-blue-500 hover:text-white bg-white w-[28rem] rounded-lg shadow-lg  '>
 <HiUserCircle className='text-yellow-400 text-9xl'  />
@@ -112,8 +113,8 @@ const logoutHandler = () => {
         <div className="mb-6 w-full lg:w-1/5">
           <a className="text-white text-3xl font-bold leading-none" href="#">
             <img
-              className="h-12"
-              src="https://cdn.worldvectorlogo.com/logos/behance-1.svg"
+              className="h-24"
+              src={ResidenceItLogo}
               alt=""
               width="auto"
             />
@@ -121,25 +122,27 @@ const logoutHandler = () => {
         </div>
         <div className="mb-5 w-full lg:w-1/5">
           <p className="text-gray-400 leading-loose">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus
-            eget justo.
+           la reférence en matière de logement
           </p>
         </div>
         <div className="w-full lg:w-3/5 flex flex-wrap -mx-3 justify-end">
           <div className="mb-6 w-full md:w-1/2 lg:w-1/4 lg:mr-6 px-3">
-            <h5 className="mb-4 font-bold text-gray-50">Office</h5>
+            <h5 className="mb-4 font-bold text-gray-50">Bureau</h5>
             <p className="text-gray-400 leading-loose">
-              359 Hidden Valley Road, NY
+            Treichville ,avenue 21 rue 15
             </p>
           </div>
           <div className="mb-6 w-full md:w-1/2 lg:w-1/4 px-3">
             <h5 className="mb-4 font-bold text-gray-50">Contacts</h5>
-            <p className="text-gray-400">hello@example.com</p>
+            <p className="text-gray-400">resdenceit.info@gmail.com</p>
+            <p className=" font-bold text-gray-400">
+                     (+225) 27 21 54 02 21  <br/>     (+225) 07 87 08 90 13
+                  </p>
           </div>
         </div>
       </div>
       <div className="w-full flex justify-between">
-        <p className="text-sm text-gray-400">© 2021. All rights reserved.</p>
+        <p className="text-sm text-gray-400">© 2022. Tout droits reservés.</p>
         <div className="flex space-x-2 lg:space-x-4">
           <a href="#">
            <AiOutlineTwitter size={34}  className="text-purple-600" />

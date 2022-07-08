@@ -202,7 +202,7 @@ Les résidences des hommes et des femmes sont distinctes. Vous devez bien évide
 
 </div>
 {/* more informatons */}
-<p className='mb-8 text-left text-md leading-8  tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   
+<p className='mb-8 text-left text-md leading-8  hover:text-white tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   
 Prenez le soin d'enregistrer soigneusement vos coordonnées et surtout de préciser votre établissement.
 Tâchez aussi de mettre un mail et un contact valide afin que vous puissiez être contacter  en cas de nécessité.
 </p>
@@ -217,7 +217,7 @@ Tâchez aussi de mettre un mail et un contact valide afin que vous puissiez êtr
 
 </div>
 {/* more informatons */}
-<p className='mb-8 text-left text-md leading-8  tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   
+<p className='mb-8 text-left text-md leading-8  hover:text-white tracking-tight md:text-lg mt-8 text-gray-500 font-medium '>   
 La dernière étape consiste à visiter votre chambre choisir un lit, effectuer les paiements et signer le contrat.
 Aussitôt vous recevez  les clés et un reçu de paiement.
 

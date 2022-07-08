@@ -3,6 +3,7 @@ import {ImCross} from 'react-icons/im'
 import { Link } from 'react-router-dom'
 import NavAtom from '../recoil/Atoms/NavAtom'
 import {useSetRecoilState} from "recoil"
+import ResidenceItLogo from '../assets/ResidenceITLogo.png'
 function SideBar() {
   const setNavState =  useSetRecoilState(NavAtom)
   const CloseNav = () =>{
@@ -15,8 +16,8 @@ function SideBar() {
         <div className="flex flex-col justify-between h-full">
           <a className="inline-block" href="#">
             <img
-              className="h-8"
-              src="https://cdn.worldvectorlogo.com/logos/behance-1.svg"
+              className="h-14"
+              src={ResidenceItLogo}
               alt=""
             />
           </a>
@@ -32,7 +33,7 @@ function SideBar() {
             <li>
               <a
                 className="block py-3 px-4 text-coolGray-500 hover:text-coolGray-900 font-medium hover:bg-coolGray-50 rounded-md"
-                href="#"
+                href="#about"
               >
                   A propos
               </a>
@@ -40,7 +41,7 @@ function SideBar() {
             <li>
               <a
                 className="block py-3 px-4 text-coolGray-500 hover:text-coolGray-900 font-medium hover:bg-coolGray-50 rounded-md"
-                href="#"
+                href="##howitworks"
               >
           comment ca marche ?
               </a>
