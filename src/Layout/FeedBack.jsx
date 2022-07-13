@@ -1,8 +1,12 @@
 import React from 'react'
-
+import {BsFacebook} from 'react-icons/bs'
 function FeedBack() {
   return (
-    <section className="relative pt-20 2xl:pt-40 bg-gray-800 absolute bottom-0 z-40 ">
+    <section className="relative pt-20 2xl:pt-40 bg-gray-800  bottom-0 z-40 ">
+     {/* importation du lien  facebook */}
+     <a className='bottom-8 right-8 z-10 absolute' href='https://www.facebook.com/residenceitabidjan/' target="_blank" >
+     <BsFacebook size={44}  className="text-purple-600" />
+     </a>
   <div className="hidden lg:block absolute top-0 right-0 h-full bg-gray-600 w-1/2" />
   <div className="container px-4 mx-auto">
     <div className="max-w-5xl mx-auto">
@@ -25,6 +29,7 @@ function FeedBack() {
               </span>
               <h2 className="mt-10 mb-16 text-5xl font-bold font-heading text-white">
          Contacter nous !
+         <p className='text-gray-500 font-bold text-lg'>cliquer sur un numero.</p>
               </h2>
               <div className="py-6 px-8 mb-4 bg-gray-600 rounded-lg">
                 <div className="flex items-center">
@@ -44,7 +49,9 @@ function FeedBack() {
                     </svg>
                   </span>
                   <p className="text-lg font-bold text-white">
-                     (+225) 27 21 54 02 21  <br/>     (+225) 07 87 08 90 13
+                  (+225)   <a href="https://wa.me/2250787089013">07 87 08 90 13</a>
+                  <br/>  
+                     (+225) 27 21 54 02 21  
                   </p>
                 </div>
               </div>

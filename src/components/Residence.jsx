@@ -1,10 +1,15 @@
 import React from 'react'
 import {MdOutlineBedroomParent,MdOutlineGroups} from 'react-icons/md'
 import {GiPapers} from 'react-icons/gi'
+import { Link } from 'react-router-dom'
 
 function Residence({residence}) {
+  const residenceId = residence._id
+
+  const residenceLink ="/residence/"+ residenceId
   return (
-<div className='bg-gray-100 w-[26rem] h-[30rem] pb-2 rounded drop-shadow-lg p-2 cursor-pointer transform hover:-translate-y-4 hover:transition duration-300' >
+<Link to={residenceLink} 
+className='bg-gray-100 w-[26rem] h-[30rem] pb-2 rounded drop-shadow-lg p-2 cursor-pointer transform hover:-translate-y-4 hover:transition duration-300' >
   {/* image et location */}
 <div className='w-full p-2 relative'>
   {/* image */}
@@ -44,7 +49,7 @@ function Residence({residence}) {
 
 </div> */}
 
-</div>
+</Link>
   )
 }
 
