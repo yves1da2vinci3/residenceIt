@@ -106,7 +106,7 @@ Aujourd'hui résidence IT est la destination favorite des étudiants de  nombreu
           <div className="w-full md:w-auto py-1 md:py-0 md:mr-4 cursor-pointer">
               <a
                 className="inline-block py-5 px-7 w-full text-base md:text-lg leading-4 text-blue-50 font-medium text-center bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 border border-blue-500 rounded-md shadow-sm"
-                href="#"
+                href='https://www.facebook.com/residenceitabidjan/'
               >
        plus d'infos
               </a>
@@ -114,8 +114,8 @@ Aujourd'hui résidence IT est la destination favorite des étudiants de  nombreu
             <div className="w-full md:w-auto py-1 md:py-0">
               <a
                 className="inline-block py-5 px-7 w-full text-base md:text-lg leading-4 text-blue-300 font-medium text-center bg-white hover:bg-coolGray-100 focus:ring-2 focus:ring-blue-200 focus:ring-opacity-50 border border-blue-200 rounded-md shadow-sm"
-                href="#"
-              >
+                href="https://wa.me/2250787089013"
+            >
           nous contacter
               </a>
             </div>
