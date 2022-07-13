@@ -14,7 +14,8 @@ const residenceId = residence._id
 // //    }
     // const [IsAvailable,SetAvailable] = useState(true)
   return (
-    <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-10 mb-20">
+    <Link to={residenceLink}
+     className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-10 mb-20">
     <div className="p-6 bg-white">
         { residence.isAvailable ? <span className="px-2 py-1 text-xs font-bold font-heading border-2 border-blue-300 rounded-full text-blue-300 uppercase bg-white">
            disponible
@@ -48,7 +49,7 @@ const residenceId = residence._id
     <FaEye  size={28} color="black" />
       </Link   >
     </div>
-  </div>
+  </Link>
   )
 }
 
