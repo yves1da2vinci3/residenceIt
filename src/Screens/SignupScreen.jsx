@@ -34,13 +34,13 @@ const password = passwordInput.current.value
 const School = SchoolInput.current.value
 const birthDate = birthDateInput.current.value
 const sex = sexInput.current.value
-    axios.post(`${dns}/api/users/`,{lastName, firstName,phoneNumber,Email, password,School,birthDate,ResidenceId,sex}, { headers: {
+    axios.post(`${dns}/api/users`,{lastName, firstName,phoneNumber,Email, password,School,birthDate,ResidenceId,sex}, { headers: {
       'Content-Type': 'application/json',
     },
   })
     .then(function (response) {
       const userId = response.data._id
-axios.post(`${dns}/api/requests/`,{Forfeit,ResidenceId,userId},{ headers: {
+axios.post(`${dns}/api/requests`,{Forfeit,ResidenceId,userId},{ headers: {
   'Content-Type': 'application/json',
 }}
 ).then(response=>{
