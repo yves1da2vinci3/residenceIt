@@ -161,31 +161,25 @@ Les résidences des hommes et des femmes sont distinctes. Vous devez bien évide
   <li>➢ 
  offre it-6
      <p>6 par chambre, factures d'eau et electricité prises en charge</p> 
-     <p>#  29.000f cfa / mois / personne</p> 
+     <p>  29.000f cfa / mois / personne</p> 
   
 
   </li>
   <li>➢ 
  offre it-4
      <p>4 par chambre ,factures d'eau et electricité prises en charge</p> 
-     <p>#  39.000f cfa / mois / personne</p> 
+     <p>  39.000f cfa / mois / personne</p> 
   
 
   </li>
   <li>➢ 
  offre it-3
      <p>3 par chambre, factures d'eau et electricité prises en charge</p> 
-     <p>#  49.000f cfa / mois / personne</p> 
+     <p>  49.000f cfa / mois / personne</p> 
   
 
   </li>
-  <li>➢ 
- offre it-2
-     <p>2 par chambre, factures d'eau et electricité prises en charge</p> 
-     <p>#  59.000f cfa / mois / personne</p> 
   
-
-  </li>
 </ul>
 
 </p>
